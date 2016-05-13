@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r63-nd-nkl">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="8zu-hc-TVq">
+            <objects>
+                <navigationController id="r63-nd-nkl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tPD-N3-VVL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FmW-Dt-IxJ" kind="relationship" relationship="rootViewController" id="uT3-i3-APN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T4s-RI-HJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="362"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wLa-2E-dkr">
+            <objects>
+                <viewController id="FmW-Dt-IxJ" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QDF-P8-qCd"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Yf-Da-RIc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="95w-fR-KQg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsI-5C-coe">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Earth">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="FmW-Dt-IxJ" eventType="touchUpInside" id="muo-sG-obb"/>
+                                    <segue destination="Ief-36-ev7" kind="show" id="gis-tF-OoG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Let's learn about planets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPI-OD-nCM">
+                                <rect key="frame" x="16" y="99" width="568" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="IPI-OD-nCM" secondAttribute="centerX" id="2Rb-f7-0sb"/>
+                            <constraint firstAttribute="centerX" secondItem="KsI-5C-coe" secondAttribute="centerX" id="gIe-Pe-AN5"/>
+                            <constraint firstItem="IPI-OD-nCM" firstAttribute="top" secondItem="QDF-P8-qCd" secondAttribute="bottom" constant="35" id="mus-Up-YaM"/>
+                            <constraint firstAttribute="centerY" secondItem="KsI-5C-coe" secondAttribute="centerY" id="tlm-47-bVz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bjq-fz-vml"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fOw-RM-6r7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400" y="362"/>
+        </scene>
+        <!--Planet View Controller-->
+        <scene sceneID="2Z7-np-NTu">
+            <objects>
+                <viewController id="Ief-36-ev7" customClass="PlanetViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qd8-Jk-Sh6"/>
+                        <viewControllerLayoutGuide type="bottom" id="BWR-7E-KXa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qIp-0I-Wco">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Planet name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coy-zo-P6m">
+                                <rect key="frame" x="16" y="289" width="568" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="coy-zo-P6m" secondAttribute="centerY" id="3hu-bm-AXf"/>
+                            <constraint firstAttribute="centerX" secondItem="coy-zo-P6m" secondAttribute="centerX" id="QbW-2a-a1u"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="planetNameLabel" destination="coy-zo-P6m" id="xUa-wS-kNL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcL-YU-M2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079" y="362"/>
+        </scene>
+    </scenes>
+</document>
