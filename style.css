@@ -1,0 +1,28 @@
+.home {
+  background-color: #666666;
+  color: #ffffff;
+  font-family: Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 75px;
+  margin: 50px auto;
+  width: 90%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.home a {
+  color: #ff66A3;
+  text-decoration: none;
+}
+
+.home a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+  .home {
+    font-size: 34px;
+    line-height: 40px;
+    margin: 20px auto;
+  }
+}
