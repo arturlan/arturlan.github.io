@@ -1,1 +1,0 @@
-../../../iOS-Color-Picker/Private/FCColorSwatchView.h
