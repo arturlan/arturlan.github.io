@@ -4,7 +4,7 @@
 }
 
 .navbar-header a {
-  color: #AA8F00;  
+  color: #AA8F00;
 }
 
 .main {
@@ -15,7 +15,7 @@
   font-weight: bold;
   line-height: 75px;
   margin: 50px auto;
-  width: 90%;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 

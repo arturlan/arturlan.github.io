@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-    <title>arturlan</title>
+    <title>arturlanpage</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
@@ -52,17 +52,17 @@
           please <a href="mailto:artur@arturlan.com">get in touch with me</a>.
 
           <pre>
+          <h5>Select iPhone</h5>
 
+if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
 
-    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+    if (document.cookie.indexOf("iphone_redirect=false") == -1) {
 
-        if (document.cookie.indexOf("iphone_redirect=false") == -1) {
-
-            window.location = "http://m.espn.go.com/wireless/?iphone&i=COMR";
-
-        }
+        window.location = "http://m.espn.go.com/wireless/?iphone&i=COMR";
 
     }
+
+}
 
           </pre>
         </div>
