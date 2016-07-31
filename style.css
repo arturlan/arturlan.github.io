@@ -35,3 +35,7 @@
     margin: 20px auto;
   }
 }
+
+#mainNavBar a:hover {
+    background-color: grey;
+}
