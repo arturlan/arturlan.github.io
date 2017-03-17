@@ -1,12 +1,31 @@
-// Inits
-window.onload = function init() {
-	var game = new GE();
-	game.start();
-};
+//canvas
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var canvasWidth = canvas.width;
+var canvasHeight = canvas.height;
+
+//canvas for car
+var canvasCar = document.getElementById('canvasCar');
+var ctxCar = canvasCar.getContext('2d');
+
+//canvas for enemie
+var canvasEnemie = document.getElementById('canvasEnemie');
+var ctxEnemy = canvasEnemie.getContext('2d');
+
+//canvas for enemie
+var canvasMenu = document.getElementById('canvasMenu');
+var ctxMenu = canvasMenu.getContext('2d');
+
+//canvas background
+var sprite = new Image();
+sprite.src = 'images/sprite.png';
+sprite.addEventListener('load', window.onload, false);
 
 //globals
+var car = new Car();
+var isPlaying = false;
 var enemies = [];
-
+var createInterval;
 //request animation frame for different browsers
 var requestAnimFrame =  window.requestAnimationFrame ||
                         window.webkitRequestAnimationFrame ||
@@ -17,24 +36,34 @@ var requestAnimFrame =  window.requestAnimationFrame ||
                             window.setTimeout(callback, 1000 / 60);
                         };
 
-//canvas
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-var canvasWidth = canvas.width;
-var canvasHeight = canvas.height;
 
-//canvas for car
-var canvasCar = document.getElementById('canvasCar');
-var ctxCar = canvasCar.getContext('2d');
-var car;
 
-//canvas for enemie
-var canvasEnemie = document.getElementById('canvasEnemie');
-var ctxEnemy = canvasEnemie.getContext('2d');
-//canvas background
-var sprite = new Image();
-sprite.src = 'images/sprite.png';
-sprite.addEventListener('load', window.onload, false);
+
+
+
+
+
+
+
+// Inits
+window.onload = function init() {
+	drawMenu();
+	drawInterval();
+	document.addEventListener('click', playGame, false);
+	
+};
+
+function playGame() {
+    drawBg();
+    startLoop();
+    document.addEventListener('keydown', checkKeyDown, false);
+    document.addEventListener('keyup', checkKeyUp, false);
+}
+
+//draw menu
+function drawMenu() {
+	ctx.drawImage(sprite,1000,400,canvasWidth,canvasHeight,0,0,canvasWidth,canvasHeight);
+}
 
 //draw backgroung
 function drawBg() {
@@ -46,7 +75,12 @@ function drawBg() {
 }
 
 
-Car.prototype.drawCar = function() {
+
+
+
+
+//car
+Car.prototype.draw = function() {
 	clearCar();
 	this.checkDirection();
 	ctxCar.drawImage(
@@ -59,12 +93,10 @@ Car.prototype.drawCar = function() {
 		this.drawY,
 		this.width,
 		this.height
-
 		);
 };
 
-Enemy.prototype.drawEnemy = function() {
-	clearEnemy();
+Enemy.prototype.draw = function() {
 	this.drawY += this.speed;
 	ctxEnemy.drawImage(
 		sprite,
@@ -76,7 +108,6 @@ Enemy.prototype.drawEnemy = function() {
 		this.drawY,
 		this.width,
 		this.height
-
 		);
 };
 
@@ -95,14 +126,12 @@ Car.prototype.checkDirection = function() {
 	}
 };
 
-//drawing objects
-function draw() {
-	car.drawCar();
-	// enemy.drawEnemy();
-	createEnemy(2);
-	
-}
 
+
+
+
+
+//main functionality
 function createEnemy(number) {
     for (var i = 0; i < number; i++) {
         enemies[enemies.length] = new Enemy();
@@ -112,8 +141,29 @@ function createEnemy(number) {
 function drawAllEnemies() {
     clearEnemy();
     for (var i = 0; i < enemies.length; i++) {
-        enemies[i].drawEnemy();
+        enemies[i].draw();
     }
+}
+
+function drawInterval() {
+	createInterval = setInterval(function() {createEnemy(1);}, 4000);
+}
+
+function loop() {
+    if (isPlaying) {
+        car.draw();
+        drawAllEnemies();
+        requestAnimFrame(loop);
+    }
+}
+
+function startLoop() {
+    isPlaying = true;
+    loop();
+}
+
+function stopLoop() {
+    isPlaying = false;
 }
 
 //clear background
@@ -130,6 +180,16 @@ function clearCar() {
 function clearEnemy() {
 	ctxEnemy.clearRect(0,0,canvasWidth,canvasHeight);
 }
+
+//clear menu
+function clearMenu() {
+	ctxMenu.clearRect(0,0,canvasWidth,canvasHeight);
+}
+
+
+
+
+
 
 //check key function
 function checkKeyDown(k) {
@@ -171,30 +231,3 @@ function checkKeyUp(k) {
 		k.preventDefault();
 	}
 }
-
-//game engine learned from edX HTML5 Part 2: Advanced Techniques.
-var GE = function() {
-
-	var mainLoop = function(time) {
-		draw();
-		requestAnimFrame(mainLoop);
-
-	};
-	//calls first
-	var start = function() {
-		drawBg();
-		drawAllEnemies();
-		car = new Car();
-		enemy = new Enemy();
-		document.addEventListener('keydown', checkKeyDown, false);
-		document.addEventListener('keyup', checkKeyUp, false);
-		requestAnimFrame(mainLoop);
-	};
-
-	return {
-		start: start
-	};
-}
-
-
-

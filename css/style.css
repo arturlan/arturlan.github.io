@@ -10,7 +10,7 @@
 	margin: 100px auto 0px;
 }
 
-#canvasCar, #canvasEnemie {
+#canvasCar, #canvasEnemie, #canvasMenu {
 	width: 1000px;
 	height: 800px;
 	display: block;

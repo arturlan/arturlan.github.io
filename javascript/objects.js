@@ -16,11 +16,10 @@ function Car() {
 
 //Object of the enemie
 function Enemy() {
-	var getIt = Math.random() < 0.5 ? 390 : 530;
 	this.srcX = 1000;
 	this.srcY = 200;
-	this.drawX = getIt;
-	this.drawY = -300;
+	this.drawX = Math.random() < 0.5 ? 390 : 530;
+	this.drawY = Math.floor(Math.random() * -300);
 	this.width = 80;
 	this.height = 200;
 	this.speed = 2;
