@@ -6,7 +6,13 @@ function Car() {
 	this.drawY = 500;
 	this.width = 80;
 	this.height = 200;
-	this.speed = 2;
+	this.speed = 3;
+
+	this.leftX = 360;
+	this.rightX = 560;
+	this.topY = 0;
+	this.bottomY = 600;
+
 	this.isUpKey = false;
 	this.isDownKey = false;
 	this.isRightKey = false;
@@ -22,5 +28,5 @@ function Enemy() {
 	this.drawY = Math.floor(Math.random() * -300);
 	this.width = 80;
 	this.height = 200;
-	this.speed = 2;
+	this.speed = 7;
 }

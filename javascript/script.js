@@ -12,7 +12,7 @@ var ctxCar = canvasCar.getContext('2d');
 var canvasEnemie = document.getElementById('canvasEnemie');
 var ctxEnemy = canvasEnemie.getContext('2d');
 
-//canvas for enemie
+//canvas for menu
 var canvasMenu = document.getElementById('canvasMenu');
 var ctxMenu = canvasMenu.getContext('2d');
 
@@ -48,7 +48,6 @@ var requestAnimFrame =  window.requestAnimationFrame ||
 // Inits
 window.onload = function init() {
 	drawMenu();
-	drawInterval();
 	document.addEventListener('click', playGame, false);
 	
 };
@@ -56,6 +55,7 @@ window.onload = function init() {
 function playGame() {
     drawBg();
     startLoop();
+    drawInterval();
     document.addEventListener('keydown', checkKeyDown, false);
     document.addEventListener('keyup', checkKeyUp, false);
 }
@@ -65,23 +65,31 @@ function drawMenu() {
 	ctx.drawImage(sprite,1000,400,canvasWidth,canvasHeight,0,0,canvasWidth,canvasHeight);
 }
 
+var drawY1 = -5;
+var drawY2 = 1600;
+function moveBg() {
+	drawY1 += 5;
+	drawY2 += 5;
+	if (drawY1 >= 1600) {
+		drawY1 = -1600;
+	} else if (drawY2 >= 1600) {
+		drawY2 = -1600;
+	}
+	drawBg();
+}
+
 //draw backgroung
 function drawBg() {
-	var srcX = 0;
-	var srcY = 0;
-	var drawX = 0;
-	var drawY = 0;
-	ctx.drawImage(sprite,srcX,srcY,canvasWidth,canvasHeight,drawX,drawY,canvasWidth,canvasHeight);
+	ctx.clearRect(0,0,canvasWidth,canvasHeight);
+	ctx.drawImage(sprite,0,0,canvasWidth,1600,0,drawY1,canvasWidth,1600);
+	ctx.drawImage(sprite,0,0,canvasWidth,1600,0,drawY2,canvasWidth,1600);
 }
 
 
-
-
-
-
-//car
+//custom functions
 Car.prototype.draw = function() {
 	clearCar();
+	console.log('Car Y: ' + this.drawY)
 	this.checkDirection();
 	ctxCar.drawImage(
 		sprite,
@@ -96,8 +104,25 @@ Car.prototype.draw = function() {
 		);
 };
 
+Car.prototype.checkDirection = function() {
+	if(this.isUpKey && this.drawY > this.topY) {
+		this.drawY -= this.speed;
+		console.log(this.topY)
+	}
+	if(this.isRightKey && this.drawX < this.rightX) {
+		this.drawX += this.speed;
+	}
+	if(this.isDownKey && this.drawY < this.bottomY) {
+		this.drawY += this.speed;
+	}
+	if(this.isLeftKey && this.drawX > this.leftX ) {
+		this.drawX -= this.speed;
+	}
+};
+
 Enemy.prototype.draw = function() {
 	this.drawY += this.speed;
+	console.log('Enemy Y: ' + this.drawY)
 	ctxEnemy.drawImage(
 		sprite,
 		this.srcX,
@@ -109,27 +134,18 @@ Enemy.prototype.draw = function() {
 		this.width,
 		this.height
 		);
+	this.checkPosition();
 };
 
-Car.prototype.checkDirection = function() {
-	if(this.isUpKey) {
-		this.drawY -= this.speed;
+Enemy.prototype.checkPosition = function() {
+	if ((this.drawY + this.height) > 2000) {
+		this.deleteEnemy();
 	}
-	if(this.isRightKey) {
-		this.drawX += this.speed;
-	}
-	if(this.isDownKey) {
-		this.drawY += this.speed;
-	}
-	if(this.isLeftKey) {
-		this.drawX -= this.speed;
-	}
-};
+}
 
-
-
-
-
+Enemy.prototype.deleteEnemy = function() {
+	enemies.splice(enemies.indexOf(this), 1);
+}
 
 //main functionality
 function createEnemy(number) {
@@ -146,29 +162,32 @@ function drawAllEnemies() {
 }
 
 function drawInterval() {
-	createInterval = setInterval(function() {createEnemy(1);}, 4000);
+	stopDrawInterval();
+	createInterval = setInterval(function() {createEnemy(1);console.log(enemies);}, 5000);
+}
+
+function stopDrawInterval() {
+	clearInterval(createInterval);
 }
 
 function loop() {
     if (isPlaying) {
         car.draw();
+        moveBg();
         drawAllEnemies();
         requestAnimFrame(loop);
     }
 }
 
-function startLoop() {
-    isPlaying = true;
-    loop();
+function startLoop() {   
+    if (!isPlaying) {
+	    isPlaying = true;
+	    loop();
+}
 }
 
 function stopLoop() {
     isPlaying = false;
-}
-
-//clear background
-function clearBg() {
-	ctx.clearRect(0,0,canvasWidth,canvasHeight);
 }
 
 //clear car
