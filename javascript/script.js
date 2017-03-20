@@ -1,3 +1,4 @@
+//learned from HTML5 game development youtube videos
 //canvas
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
@@ -16,6 +17,12 @@ var ctxEnemy = canvasEnemie.getContext('2d');
 var canvasMenu = document.getElementById('canvasMenu');
 var ctxMenu = canvasMenu.getContext('2d');
 
+//canvas for score
+var canvasScore = document.getElementById('canvasScore');
+var ctxScore = canvasScore.getContext('2d');
+ctxScore.fillStyle = 'hsla(0, 0%, 0%, 0.5)';
+ctxScore.font = 'bold 20px Arial';
+
 //canvas background
 var sprite = new Image();
 sprite.src = 'images/sprite.png';
@@ -26,6 +33,7 @@ var car = new Car();
 var isPlaying = false;
 var enemies = [];
 var createInterval;
+var score = 0;
 //request animation frame for different browsers
 var requestAnimFrame =  window.requestAnimationFrame ||
                         window.webkitRequestAnimationFrame ||
@@ -56,8 +64,10 @@ function playGame() {
     drawBg();
     startLoop();
     drawInterval();
+    updateScore();
     document.addEventListener('keydown', checkKeyDown, false);
     document.addEventListener('keyup', checkKeyUp, false);
+
 }
 
 //draw menu
@@ -89,8 +99,11 @@ function drawBg() {
 //custom functions
 Car.prototype.draw = function() {
 	clearCar();
-	console.log('Car Y: ' + this.drawY)
+	this.updateCoordinates();
+	// console.log('Car Y: ' + this.drawY);
+	// console.log('Car X: ' + this.drawX);
 	this.checkDirection();
+	this.collision();
 	ctxCar.drawImage(
 		sprite,
 		this.srcX,
@@ -104,25 +117,43 @@ Car.prototype.draw = function() {
 		);
 };
 
+Car.prototype.updateCoordinates = function() {
+	this.leftX = this.drawX;
+	this.rightX = this.drawX + this.width;
+	this.topY = this.drawY;
+	this.bottomY = this.drawY + this.height;
+}
+
 Car.prototype.checkDirection = function() {
-	if(this.isUpKey && this.drawY > this.topY) {
+	if(this.isUpKey && this.topY > 0) {
 		this.drawY -= this.speed;
-		console.log(this.topY)
 	}
-	if(this.isRightKey && this.drawX < this.rightX) {
+	if(this.isRightKey && this.rightX < 640) {
 		this.drawX += this.speed;
 	}
-	if(this.isDownKey && this.drawY < this.bottomY) {
+	if(this.isDownKey && this.bottomY < 800) {
 		this.drawY += this.speed;
 	}
-	if(this.isLeftKey && this.drawX > this.leftX ) {
+	if(this.isLeftKey && this.leftX > 360) {
 		this.drawX -= this.speed;
 	}
 };
 
+Car.prototype.collision = function() {
+	console.log('called');
+	for (var i = 0; i < enemies.length; i++) {
+		console.log('This enemy Y: ' + enemies[i].drawY);
+		console.log('This car X: ' + this.drawX);
+        if (this.drawY <= (enemies[i].drawY + 150) && this.drawX >= enemies[i].drawX) {
+        	stopLoop(); 
+        }
+    }
+};
+
 Enemy.prototype.draw = function() {
 	this.drawY += this.speed;
-	console.log('Enemy Y: ' + this.drawY)
+	// console.log('Enemy Y: ' + this.drawY);
+	// console.log('Enemy X: ' + this.drawX);
 	ctxEnemy.drawImage(
 		sprite,
 		this.srcX,
@@ -135,6 +166,7 @@ Enemy.prototype.draw = function() {
 		this.height
 		);
 	this.checkPosition();
+
 };
 
 Enemy.prototype.checkPosition = function() {
@@ -163,7 +195,9 @@ function drawAllEnemies() {
 
 function drawInterval() {
 	stopDrawInterval();
-	createInterval = setInterval(function() {createEnemy(1);console.log(enemies);}, 5000);
+	createInterval = setInterval(function() {
+		createEnemy(1);
+	}, 5000);
 }
 
 function stopDrawInterval() {
@@ -176,6 +210,9 @@ function loop() {
         moveBg();
         drawAllEnemies();
         requestAnimFrame(loop);
+        //score
+        
+        updateScore();
     }
 }
 
@@ -206,9 +243,12 @@ function clearMenu() {
 }
 
 
-
-
-
+//update score ???????
+function updateScore() {
+	ctxScore.clearRect(0,0,canvasWidth,canvasHeight);
+	score += 1;
+	ctxScore.fillText('Score: 00' + score, 850, 40);
+}
 
 //check key function
 function checkKeyDown(k) {
