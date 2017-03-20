@@ -1,33 +1,4 @@
-//learned from HTML5 game development youtube videos
-//canvas
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-var canvasWidth = canvas.width;
-var canvasHeight = canvas.height;
-
-//canvas for car
-var canvasCar = document.getElementById('canvasCar');
-var ctxCar = canvasCar.getContext('2d');
-
-//canvas for enemie
-var canvasEnemie = document.getElementById('canvasEnemie');
-var ctxEnemy = canvasEnemie.getContext('2d');
-
-//canvas for menu
-var canvasMenu = document.getElementById('canvasMenu');
-var ctxMenu = canvasMenu.getContext('2d');
-
-//canvas for score
-var canvasScore = document.getElementById('canvasScore');
-var ctxScore = canvasScore.getContext('2d');
-ctxScore.fillStyle = 'hsla(0, 0%, 0%, 0.5)';
-ctxScore.font = 'bold 20px Arial';
-
-//canvas background
-var sprite = new Image();
-sprite.src = 'images/sprite.png';
-sprite.addEventListener('load', window.onload, false);
-
+//learned from HTML5 game development youtube videos https://www.youtube.com/watch?v=egBpWHbfanI&t=1054s
 //globals
 var car = new Car();
 var isPlaying = false;
@@ -50,6 +21,7 @@ var requestAnimFrame =  window.requestAnimationFrame ||
 
 
 
+var snd = new Audio("sounds/mario.wav"); // buffers automatically when created
 
 
 
@@ -143,9 +115,19 @@ Car.prototype.collision = function() {
 	console.log('called');
 	for (var i = 0; i < enemies.length; i++) {
 		console.log('This enemy Y: ' + enemies[i].drawY);
+		console.log('This enemy X: ' + enemies[i].drawX);
 		console.log('This car X: ' + this.drawX);
-        if (this.drawY <= (enemies[i].drawY + 150) && this.drawX >= enemies[i].drawX) {
-        	stopLoop(); 
+		console.log('This car Y: ' + this.drawY);
+		console.log('This car leftX: ' + this.leftX);
+		console.log('This car rightX: ' + this.rightX);
+        if (this.drawY <= enemies[i].drawY + 150 && 
+        	this.leftX <= enemies[i].drawX &&
+        	this.rightX >= enemies[i].drawX) {
+        	
+        	stopLoop();
+        	gameOver(); 
+        	snd.play();
+        	
         }
     }
 };
@@ -210,8 +192,8 @@ function loop() {
         moveBg();
         drawAllEnemies();
         requestAnimFrame(loop);
-        //score
         
+        //score
         updateScore();
     }
 }
@@ -248,6 +230,11 @@ function updateScore() {
 	ctxScore.clearRect(0,0,canvasWidth,canvasHeight);
 	score += 1;
 	ctxScore.fillText('Score: 00' + score, 850, 40);
+}
+
+function gameOver() {
+	ctxGO.clearRect(0,0,canvasWidth,canvasHeight);
+	ctxGO.fillText('Game Over', 200, 400);
 }
 
 //check key function
