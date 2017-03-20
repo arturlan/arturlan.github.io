@@ -20,8 +20,8 @@ var requestAnimFrame =  window.requestAnimationFrame ||
 
 
 
-
-var snd = new Audio("sounds/mario.wav"); // buffers automatically when created
+//game over sound
+var sound = new Audio("sounds/mario.wav"); // buffers automatically when created
 
 
 
@@ -122,11 +122,11 @@ Car.prototype.collision = function() {
 		console.log('This car rightX: ' + this.rightX);
         if (this.drawY <= enemies[i].drawY + 150 && 
         	this.leftX <= enemies[i].drawX &&
-        	this.rightX >= enemies[i].drawX) {
-        	
+        	this.rightX >= enemies[i].drawX ) {
+
         	stopLoop();
         	gameOver(); 
-        	snd.play();
+        	sound.play();
         	
         }
     }
@@ -152,7 +152,7 @@ Enemy.prototype.draw = function() {
 };
 
 Enemy.prototype.checkPosition = function() {
-	if ((this.drawY + this.height) > 2000) {
+	if ((this.drawY + this.height) > 1000) {
 		this.deleteEnemy();
 	}
 }
@@ -178,7 +178,10 @@ function drawAllEnemies() {
 function drawInterval() {
 	stopDrawInterval();
 	createInterval = setInterval(function() {
-		createEnemy(1);
+		// if (score < 500) {
+			createEnemy(1);
+		// }
+		// createEnemy(2);
 	}, 5000);
 }
 

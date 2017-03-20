@@ -19,7 +19,7 @@ var ctxMenu = canvasMenu.getContext('2d');
 //canvas for score
 var canvasScore = document.getElementById('canvasScore');
 var ctxScore = canvasScore.getContext('2d');
-ctxScore.fillStyle = 'hsla(0, 0%, 0%, 0.5)';
+ctxScore.fillStyle = 'hsla(0, 0%, 100%, 0.5)';
 ctxScore.font = 'bold 20px Arial';
 
 //canvas background
