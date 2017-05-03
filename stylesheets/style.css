@@ -1,0 +1,14 @@
+body {
+
+}
+#navigation{
+  float: right;
+}
+
+#navigation li {
+  text-decoration: none;
+  list-style: none;
+  text-align: right;
+  display: inline;
+  margin: 0 10px;
+}
