@@ -1,5 +1,9 @@
 body {
-
+  background: url('https://static.pexels.com/photos/129922/pexels-photo-129922.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 #navigation{
   float: right;
@@ -11,4 +15,21 @@ body {
   text-align: right;
   display: inline;
   margin: 0 10px;
+}
+
+
+@media screen and (max-width: 512px) {
+  body {
+    left: 50%;
+    margin-left: -512px;
+  }
+
+  #navigation li {
+    text-decoration: none;
+    list-style: none;
+    text-align: right;
+    display: inline;
+    margin: 0 10px;
+    font-size: 100px;
+  }
 }
