@@ -20,6 +20,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+
 body {
   background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFnu-xDFjhgT6Y3Vbc9lVl2FCzLqAWe2kzSIZ300ugzD_6jrRc') no-repeat center center fixed;
   background-size: cover;
@@ -31,39 +32,77 @@ body {
 ul {
   list-style: none;
 }
-.main ul li a {
-
-  text-decoration: none;
+.main a {
   color: #cccccc;
 }
 
 header {
 }
 
+/*********************left-wing*************************/
 .left-wing {
-  float: left;
-  width: 50%;
+  width: 100%;
+  text-align: center;
+  height: auto;
+  margin: 30px auto;
 }
 
-/*right-wing*/
-.right-wing {
-  float: right;
-  width: 50%;
-}
-
-.right-wing ul li a {
-  font-weight: 100;
+.left-wing a {
+  text-decoration: none;
+  font-size: 50px;
   font-family: "etica", Helvetica, sans-serif;
 }
 
 
+/*********************right-wing*************************/
+.right-wing {
+  width: 100%;
+  text-align: center;
+  height: auto;
+  bottom: 0px;
+  top: 0px;
+  font-weight: 100;
+  font-family: "etica", Helvetica, sans-serif;
+  font-size: 60px;
+}
+
+.right-wing a {
+  text-decoration: none;
+}
+
+i {
+  font-style: italic;
+}
 
 footer {
 }
 
-@media screen and (max-width: 512px) {
+
+@media screen and (min-width: 600px) {
   body {
-    left: 50%;
-    margin-left: -512px;
+  }
+
+  .left-wing {
+    width: 50%;
+    text-align: center;
+    height: auto;
+    float: left;
+  }
+
+  .left-wing a {
+    text-decoration: none;
+    font-size: 80px;
+    font-family: "etica", Helvetica, sans-serif;
+  }
+
+  .right-wing {
+    width: 50%;
+    float: right;
+    text-align: center;
+  }
+
+  .right-wing a {
+    width: 100%;
+    font-size: 60px;
   }
 }
