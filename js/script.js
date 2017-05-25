@@ -5,15 +5,22 @@ $(document).ready(function(){
 
     $("#name a").mouseover(function(){
       $("#name a").css("text-decoration", "underline");
-      console.log("over");
+    });
+    $("#name a").mouseleave(function(){
+      $("#name a").css("text-decoration", "none");
     });
 
-    $("#playing").mouseenter(function(){
-      $("#main").fadeTo(300, 0, "linear");
-      console.log("playing");
+    $("#developing").mouseover(function(){
+      $("#developing").toggleClass("zoom");
+    });
+    $("#developing").mouseleave(function(){
+      $("#developing").toggleClass("zoom");
     });
 
+    $("#playing").mouseover(function(){
+      $(".main").fadeTo(300, 0, "linear");
+    });
     $("#playing").mouseleave(function(){
-      $("#main").fadeTo(300, 1, "linear");
+      $(".main").fadeTo(300, 1, "linear");
     });
 });
