@@ -32,13 +32,22 @@ body {
 ul {
   list-style: none;
 }
-.main a {
+a {
   color: #cccccc;
+  text-decoration: none;
+}
+i {
+  font-style: italic;
+}
+hr {
+  width: 80%;
 }
 
-header {
+.left-wing h1 {
+  color: #cccccc;
+  font-size: 50px;
+  font-family: "etica", Helvetica, sans-serif;
 }
-
 /*********************left-wing*************************/
 .left-wing {
   width: 100%;
@@ -48,7 +57,6 @@ header {
 }
 
 .left-wing a {
-  text-decoration: none;
   font-size: 50px;
   font-family: "etica", Helvetica, sans-serif;
 }
@@ -70,13 +78,70 @@ header {
   text-decoration: none;
 }
 
-i {
+#running {
+  color: 	#cc0001;
+  font-family: 'Economica', sans-serif;
+  font-weight: 500;
+}
+
+.collecting#collecting {
+  color: #35a7ce;
+  font-family: "elena-web-basic", Helvetica, serif;
   font-style: italic;
+  font-weight: 700;
 }
 
 footer {
 }
 
+/*************************************************************/
+/*********************developing page*************************/
+.row ul li {
+  display: inline;
+  font-weight: 100;
+  font-family: "etica", Helvetica, sans-serif;
+}
+
+.row h1 {
+  font-size: 30px;
+  font-family: "etica", Helvetica, sans-serif;
+  font-weight: 100;
+}
+
+.row ul {
+  margin-left: 5%
+}
+
+.page {
+  margin: 5%;
+}
+
+.page hr {
+  width: 90%;
+}
+
+/*************************************************************/
+/*********************thinking page*************************/
+
+
+/*************************************************************/
+/*********************running page*************************/
+
+
+/*************************************************************/
+/*********************making page*************************/
+
+
+/*************************************************************/
+/*********************collecting page*************************/
+
+
+
+/*************************************************************/
+/*********************reading page*************************/
+
+
+/*************************************************************/
 
 @media screen and (min-width: 600px) {
   body {
