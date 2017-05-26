@@ -1,1 +1,1 @@
-# www.arturlan.in
+# arturlan.in

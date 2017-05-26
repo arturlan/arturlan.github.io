@@ -38,11 +38,14 @@ a {
 i {
   font-style: italic;
 }
+.isitalic {
+  font-style: italic;
+}
 
 @media screen and (max-width: 600px) {
 
   #horizontalLineMobile {
-    width: 80%;
+    width: 96%;
   }
   #horizontalLineDesktop {
     display: none;
@@ -106,31 +109,56 @@ i {
 footer {
 }
 
-/*************************************************************/
-/*********************developing page*************************/
+
+.main ul li a:hover#developing {
+  font-weight: bold;
+}
+.main ul li a:hover#thinking {
+  color: #286fa5;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+}
+.main ul li a:hover#running {
+  font-style: italic;
+}
+.main ul li a:hover#making {
+  text-decoration: line-through;
+}
+.main ul li a:hover#collecting {
+  text-decoration: underline;
+}
+.main ul li a:hover#reading {
+  background-color: #ffd700;
+  opacity: 0.2;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  color: #28283c;
+}
+
 .row ul li {
   display: inline;
   font-weight: 100;
   font-family: "etica", Helvetica, sans-serif;
 }
-
 .row h1 {
   font-size: 30px;
   font-family: "etica", Helvetica, sans-serif;
   font-weight: 100;
 }
-
 .row ul {
   margin-left: 5%
 }
-
 .page {
   margin: 5%;
 }
-
 .page hr {
   width: 90%;
 }
+
+
+
+/*************************************************************/
+/*********************developing page*************************/
 
 /*************************************************************/
 /*********************thinking page*************************/
@@ -176,6 +204,8 @@ footer {
 
   i {
     margin: 3px;
+    color: #cccccc;
+    font-size: 10px;
   }
 
   .left-wing {
@@ -186,7 +216,7 @@ footer {
     margin-top: 5%;
   }
 
-  .left-wing a {
+  .left-wing li {
     text-decoration: none;
     font-size: 80px;
     font-family: "etica", Helvetica, sans-serif;
@@ -207,14 +237,10 @@ footer {
   .page {
     margin: 1%;
   }
-
   .social {
     float: right;
-    margin:0;
-    position: relative;
   }
-
-  #developing:hover {
-    font-size: 110%;
+  .social li {
+    margin: 5px;
   }
 }
