@@ -23,4 +23,11 @@ $(document).ready(function(){
     $("#playing").mouseleave(function(){
       $(".main").fadeTo(300, 1, "linear");
     });
+
+    $("#reading").mouseover(() => {
+      $(".hidden").prepend('<img id="authors" src="images/authors.png"/>')
+    });
+    $("#reading").mouseleave(() => {
+      $("#authors").remove();
+    });
 });
