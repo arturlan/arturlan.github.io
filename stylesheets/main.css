@@ -21,7 +21,7 @@ time, mark, audio, video {
 }
 
 body {
-  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFnu-xDFjhgT6Y3Vbc9lVl2FCzLqAWe2kzSIZ300ugzD_6jrRc') no-repeat center center fixed;
+  background-color: #3B3738;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
