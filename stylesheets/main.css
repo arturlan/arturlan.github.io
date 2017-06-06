@@ -175,9 +175,21 @@ i {
 }
 
 @media screen and (max-width: 600px) {
-  .container#projects .content .grid .efect-rich {
-    margin: 20px 50px;
-    align-self: center;
+  .content .grid .efect-rich {
+    display: none;
+  }
+  .container#projects img {
+    width: 100%;
+    margin: 20px auto;
+  }
+  #mobile {
+    left:0;
+    right:0;
+    text-align: center;
+    margin: 5px;
+    line-height: 20px;
+    font-family: "etica", Helvetica, sans-serif;
+    color: white;
   }
 }
 
@@ -460,5 +472,9 @@ i {
   #authors {
     bottom: 15px;
     height: 100%;
+  }
+
+  .container#projects .mobile {
+    display: none;
   }
 }
