@@ -25,9 +25,11 @@ $(document).ready(function(){
     });
 
     $("#reading").mouseover(() => {
+      $('.arturlan').hide();
       $(".hidden").prepend('<img id="authors" src="images/authors.png"/>')
     });
     $("#reading").mouseleave(() => {
       $("#authors").remove();
+      $('.arturlan').show();
     });
 });

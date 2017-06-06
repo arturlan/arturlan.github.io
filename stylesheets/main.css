@@ -41,6 +41,9 @@ i {
 .isitalic {
   font-style: italic;
 }
+.arturlanname {
+  color: #4A96AD;
+}
 
 @media screen and (max-width: 600px) {
 
@@ -54,6 +57,9 @@ i {
     display: none;
   }
   footer {
+    display: none;
+  }
+  .hidden#box {
     display: none;
   }
 }
@@ -111,9 +117,10 @@ i {
 
 .main ul li a:hover#developing {
   font-weight: bold;
+  color: white;
 }
 .main ul li a:hover#thinking {
-  color: #286fa5;
+  color: #A2AB58;
   -webkit-transition: color 0.3s ease;
   -moz-transition: color 0.3s ease;
 }
@@ -124,6 +131,7 @@ i {
   text-decoration: line-through;
 }
 .main ul li a:hover#collecting {
+  color: #35a7ce;
   text-decoration: underline;
 }
 .main ul li a:hover#reading {
@@ -156,17 +164,7 @@ i {
 
 /*************************************************************/
 /*********************developing page*************************/
-/*#projects .content {
-    padding: 60px 0;
-}
-#projects .grid {
-    position: fixed;
-    margin: auto;
-    max-width: 960px;
-    list-style: none;
-    text-align: center;
-    display: inline-block;
-}*/
+
 .container .grid {
   display: inline-block;
   position: fixed;
@@ -176,6 +174,13 @@ i {
   margin: auto;
 }
 
+@media screen and (max-width: 600px) {
+  .container#projects .content .grid .efect-rich {
+    margin: 20px 50px;
+    align-self: center;
+  }
+}
+
 #projects .grid figure {
   position: relative;
   float: left;
@@ -183,7 +188,7 @@ i {
   margin: 10px 1%;
   min-width: 280px;
   max-width: 480px;
-  max-height: 360px;
+  max-height: 345px;
   width: 48%;
   background: #3085a3;
   text-align: center;
@@ -355,8 +360,6 @@ i {
 /*************************************************************/
 
 @media screen and (min-width: 600px) {
-  body {
-  }
 
   .navbar li {
     display: inline;
@@ -447,6 +450,11 @@ i {
     height: 400px;
     margin: 10% auto;
     position: center;
+  }
+
+  .hidden#box img.arturlan {
+    width: 350px;
+    height: 350px;
   }
 
   #authors {
