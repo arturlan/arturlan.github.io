@@ -1,7 +1,7 @@
 /*main*/
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, abbr, acronym, address, big, cite,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -350,7 +350,39 @@ i {
 }
 /*************************************************************/
 /*********************thinking page*************************/
-
+.interview.questions .row.hero {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin: 40px;
+}
+.interview.questions .row.ironman {
+  color: #D9853B;
+  font-size: x-large;
+  margin: 20px 40px;
+}
+.interview.questions .row.weapon {
+  margin: 0 60px;
+  list-style-type: square;
+  color: #cccccc;
+}
+.interview.questions .row.type {
+  margin: 0 40px;
+  color: #cccccc;
+  font-family: 'Alegreya', serif;
+}
+code {
+  background-color: #67BCDB;
+  color: black;
+  padding: 0 1px;
+}
+pre {
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;
+  color: #67BCDB;
+}
 
 /*************************************************************/
 /*********************running page*************************/
@@ -362,7 +394,11 @@ i {
 
 /*************************************************************/
 /*********************collecting page*************************/
-
+.instagram .row.hero {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin: 40px;
+}
 
 
 /*************************************************************/

@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../stylesheets/main.css" media="screen">
     <link rel="stylesheet" href="../fonts/css/font-awesome.min.css">
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Economica|Shadows+Into+Light" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Economica|Alegreya|Roboto+Mono|Shadows+Into+Light" rel="stylesheet">
     <title>Artur Lan</title>
   </head>
   <body>
@@ -33,6 +33,44 @@
           <hr id="horizontalLineMobile">
         </div>
       </header>
+    </div>
+    <div class="interview questions">
+      <div class="row hero"><em>This is a set of thoughts on JavaScript Advanced Topics. May be messy</em></div>
+
+      <div class="row ironman">Understanding the "this" keyword in JavaScript</div>
+      <ul class="row weapon">
+        <li>By default, <code>this</code> refers to the global object.</li>
+        <li>When a function is called as a property on a parent object, <code>this</code> refers to the parent object inside that function.</li>
+        <li>When a function is called with the <code>new</code> operator, <code>this</code> refers to the newly created object inside that function.</li>
+        <li>When a function is called using <code>call</code> or <code>apply</code>, <code>this</code> refers to the first argument passed to <code>call</code> or <code>apply</code>. If the first argument is <code>null</code> or not an object, <code>this</code> refers to the global object.</li>
+      </ul>
+
+      <div class="row ironman">Understanding event delegation</div>
+      <div class="row type">
+        Let's say that we have a parent <code>ul</code> element with several child elements:
+        <pre>&lt;ul id=&quot;parent-list&quot;&gt;
+  &lt;li id=&quot;post-1&quot;&gt;Item 1&lt;/li&gt;
+  &lt;li id=&quot;post-2&quot;&gt;Item 2&lt;/li&gt;
+  &lt;li id=&quot;post-3&quot;&gt;Item 3&lt;/li&gt;
+  &lt;li id=&quot;post-4&quot;&gt;Item 4&lt;/li&gt;
+  &lt;li id=&quot;post-5&quot;&gt;Item 5&lt;/li&gt;
+  &lt;li id=&quot;post-6&quot;&gt;Item 6&lt;/li&gt;
+&lt;/ul&gt;
+        </pre>
+        Let's also say that something needs to happen when each child element is clicked.You could add a separate event listener to each individual <code>li</code> element, but what if <code>li</code> elements are frequently added and removed from the list? Here's a very basic JavaScript snippet which illustrates event delegation:
+
+        <pre>
+// Get the element, add a click listener...
+ document.getElementById(&quot;parent-list&quot;).addEventListener(&quot;click&quot;, function(e) {
+   // e.target is the clicked element!
+   // If it was a list item
+   if(e.target &amp;&amp; e.target.nodeName == &quot;LI&quot;) {
+      // List item found! Output the ID!
+      console.log(&quot;List item &quot;, e.target.id.replace(&quot;post-&quot;, &quot;&quot;), &quot; was clicked!&quot;);
+   }
+ });
+        </pre>
+      </div>
     </div>
   </body>
 </html>
