@@ -474,7 +474,7 @@ i {
     height: 100%;
   }
 
-  .container#projects .mobile {
+  #mobile {
     display: none;
   }
 }
