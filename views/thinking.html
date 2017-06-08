@@ -61,15 +61,52 @@
 
         <pre>
 // Get the element, add a click listener...
- document.getElementById(&quot;parent-list&quot;).addEventListener(&quot;click&quot;, function(e) {
-   // e.target is the clicked element!
-   // If it was a list item
-   if(e.target &amp;&amp; e.target.nodeName == &quot;LI&quot;) {
-      // List item found! Output the ID!
-      console.log(&quot;List item &quot;, e.target.id.replace(&quot;post-&quot;, &quot;&quot;), &quot; was clicked!&quot;);
-   }
- });
+document.getElementById(&quot;parent-list&quot;).addEventListener(&quot;click&quot;, function(e) {
+ // e.target is the clicked element!
+ // If it was a list item
+ if(e.target &amp;&amp; e.target.nodeName == &quot;LI&quot;) {
+    // List item found! Output the ID!
+    console.log(&quot;List item &quot;, e.target.id.replace(&quot;post-&quot;, &quot;&quot;), &quot; was clicked!&quot;);
+ }
+});
         </pre>
+      </div>
+      <div class="row ironman">Understanding Prototypal Inheritance in JavaScript</div>
+      <div class="row type">
+        In JavaScript all functions are objects
+        <pre>
+function foo() {
+
+}
+
+typeof foo.prototype // &lsquo;object&rsquo;
+        </pre>
+        And here is the example of prototype inheritance
+        <pre>
+function Dog() {
+
+}
+
+Dog.prototype.bark = function() {
+
+console.log(&#x2018;woof!&#x2019;);
+
+};
+
+var fido = new Dog();
+fido.bark(); // &#x2018;woof!&#x2019;
+        </pre>
+        JavaScript uses an inheritance model called <b>“differential inheritance”.</b> What that means is that methods aren’t copied from parent to child. Instead, children have an “invisible link” back to their parent object.
+        What actually happens when I write <code>fido.bark()</code> is this:<br>
+        1. The JS engine looks for a property called bark on our fido object.<br>
+        2. It doesn’t find one, so it looks “up the prototype chain” to fido’s parent, which is <code>Dog.prototype</code>.<br>
+
+        3. It finds <code>Dog.prototype.bark</code>, and calls it with this bound to fido.<br>
+
+      </div>
+      <div class="row ironman">AMD and CommonJS</div>
+      <div class="row type">
+        In JavaScript, the word "modules" refers to small units of independent, reusable code. ... Asynchronous Module Definition (AMD) is the most popular for client-side code, while node.js modules (an extension to CommonJS Modules/1.1) is the leading pattern in server-side environments.
       </div>
     </div>
   </body>
