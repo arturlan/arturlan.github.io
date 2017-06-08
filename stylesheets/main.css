@@ -384,6 +384,12 @@ pre {
   color: #67BCDB;
 }
 
+@media screen and (max-width: 600px) {
+  .interview.questions .row.ironman {
+    margin: 20px 20px;
+  }
+}
+
 /*************************************************************/
 /*********************running page*************************/
 
@@ -403,7 +409,11 @@ pre {
 
 /*************************************************************/
 /*********************reading page*************************/
-
+.reading.list .anna.karenina {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin: 40px;
+}
 
 /*************************************************************/
 
@@ -479,7 +489,6 @@ pre {
     font-weight: 400;
   }
   #collecting:hover {
-    color: #d8e6f0;
     font-weight: 400;
   }
 

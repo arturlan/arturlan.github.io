@@ -1,8 +1,4 @@
 $(document).ready(function(){
-    $("#running").click(function(){
-        console.log('clicking');
-    });
-
     $("#name a").mouseover(function(){
       $("#name a").css("text-decoration", "underline");
     });
@@ -18,10 +14,10 @@ $(document).ready(function(){
     });
 
     $("#playing").mouseover(function(){
-      $(".main").fadeTo(300, 0, "linear");
+      $("body").fadeTo(300, 0, "linear");
     });
     $("#playing").mouseleave(function(){
-      $(".main").fadeTo(300, 1, "linear");
+      $("body").fadeTo(300, 1, "linear");
     });
 
     $("#reading").mouseover(() => {
