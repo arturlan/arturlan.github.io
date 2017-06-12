@@ -30,9 +30,9 @@ $(document).ready(function(){
     });
 
     // thinking
-    $('.row.ironman').on('click', () => {
-      $parent_box = $(this).closest('.question');
-      $parent_box.siblings().find('.bottom').hide();
-	    $parent_box.find('.bottom').toggle();
-    })
+    $('.row.ironman').on('click', function() {
+    	$parent_box = $(this).closest('.question');
+    	$parent_box.siblings().find('.row.type').hide();
+    	$parent_box.find('.row.type').toggle();
+    });
 });
