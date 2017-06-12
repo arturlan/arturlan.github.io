@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../fonts/css/font-awesome.min.css">
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Economica|Alegreya|Roboto+Mono|Shadows+Into+Light" rel="stylesheet">
+    <script src="../js/script.js"></script>
     <title>Artur Lan</title>
   </head>
   <body>
@@ -37,78 +38,151 @@
     <div class="interview questions">
       <div class="row hero"><em>This is a set of thoughts on JavaScript Advanced Topics. May be messy.</em></div>
 
-      <div class="row ironman">Understanding the "this" keyword in JavaScript</div>
-      <ul class="row weapon">
-        <li>By default, <code>this</code> refers to the global object.</li>
-        <li>When a function is called as a property on a parent object, <code>this</code> refers to the parent object inside that function.</li>
-        <li>When a function is called with the <code>new</code> operator, <code>this</code> refers to the newly created object inside that function.</li>
-        <li>When a function is called using <code>call</code> or <code>apply</code>, <code>this</code> refers to the first argument passed to <code>call</code> or <code>apply</code>. If the first argument is <code>null</code> or not an object, <code>this</code> refers to the global object.</li>
-      </ul>
-
-      <div class="row ironman">Understanding event delegation</div>
-      <div class="row type">
-        Let's say that we have a parent <code>ul</code> element with several child elements:
-        <pre>&lt;ul id=&quot;parent-list&quot;&gt;
-  &lt;li id=&quot;post-1&quot;&gt;Item 1&lt;/li&gt;
-  &lt;li id=&quot;post-2&quot;&gt;Item 2&lt;/li&gt;
-  &lt;li id=&quot;post-3&quot;&gt;Item 3&lt;/li&gt;
-  &lt;li id=&quot;post-4&quot;&gt;Item 4&lt;/li&gt;
-  &lt;li id=&quot;post-5&quot;&gt;Item 5&lt;/li&gt;
-  &lt;li id=&quot;post-6&quot;&gt;Item 6&lt;/li&gt;
-&lt;/ul&gt;
-        </pre>
-        Let's also say that something needs to happen when each child element is clicked.You could add a separate event listener to each individual <code>li</code> element, but what if <code>li</code> elements are frequently added and removed from the list? Here's a very basic JavaScript snippet which illustrates event delegation:
-
-        <pre>
-// Get the element, add a click listener...
-document.getElementById(&quot;parent-list&quot;).addEventListener(&quot;click&quot;, function(e) {
- // e.target is the clicked element!
- // If it was a list item
- if(e.target &amp;&amp; e.target.nodeName == &quot;LI&quot;) {
-    // List item found! Output the ID!
-    console.log(&quot;List item &quot;, e.target.id.replace(&quot;post-&quot;, &quot;&quot;), &quot; was clicked!&quot;);
- }
-});
-        </pre>
+      <div class="question">
+        <div class="row ironman">Understanding the "this" keyword in JavaScript</div>
+        <ul class="row type">
+          <li>By default, <code>this</code> refers to the global object.</li>
+          <li>When a function is called as a property on a parent object, <code>this</code> refers to the parent object inside that function.</li>
+          <li>When a function is called with the <code>new</code> operator, <code>this</code> refers to the newly created object inside that function.</li>
+          <li>When a function is called using <code>call</code> or <code>apply</code>, <code>this</code> refers to the first argument passed to <code>call</code> or <code>apply</code>. If the first argument is <code>null</code> or not an object, <code>this</code> refers to the global object.</li>
+        </ul>
       </div>
-      <div class="row ironman">Understanding Prototypal Inheritance in JavaScript</div>
-      <div class="row type">
-        In JavaScript all functions are objects
-        <pre>
-function foo() {
 
-}
+      <div class="question">
+        <div class="row ironman">Understanding event delegation</div>
+        <div class="row type">
+          Let's say that we have a parent <code>ul</code> element with several child elements:
+          <pre>
+            &lt;ul id=&quot;parent-list&quot;&gt;
+              &lt;li id=&quot;post-1&quot;&gt;Item 1&lt;/li&gt;
+              &lt;li id=&quot;post-2&quot;&gt;Item 2&lt;/li&gt;
+              &lt;li id=&quot;post-3&quot;&gt;Item 3&lt;/li&gt;
+              &lt;li id=&quot;post-4&quot;&gt;Item 4&lt;/li&gt;
+              &lt;li id=&quot;post-5&quot;&gt;Item 5&lt;/li&gt;
+              &lt;li id=&quot;post-6&quot;&gt;Item 6&lt;/li&gt;
+            &lt;/ul&gt;
+          </pre>
+          Let's also say that something needs to happen when each child element is clicked.You could add a separate event listener to each individual <code>li</code> element, but what if <code>li</code> elements are frequently added and removed from the list? Here's a very basic JavaScript snippet which illustrates event delegation:
 
-typeof foo.prototype // &lsquo;object&rsquo;
-        </pre>
-        And here is the example of prototype inheritance
-        <pre>
-function Dog() {
-
-}
-
-Dog.prototype.bark = function() {
-
-console.log(&#x2018;woof!&#x2019;);
-
-};
-
-var fido = new Dog();
-fido.bark(); // &#x2018;woof!&#x2019;
-        </pre>
-        JavaScript uses an inheritance model called <b>“differential inheritance”.</b> What that means is that methods aren’t copied from parent to child. Instead, children have an “invisible link” back to their parent object.
-        What actually happens when I write <code>fido.bark()</code> is this:<br>
-        1. The JS engine looks for a property called bark on our fido object.<br>
-        2. It doesn’t find one, so it looks “up the prototype chain” to fido’s parent, which is <code>Dog.prototype</code>.<br>
-
-        3. It finds <code>Dog.prototype.bark</code>, and calls it with this bound to fido.<br>
-
+          <pre>
+            // Get the element, add a click listener...
+            document.getElementById(&quot;parent-list&quot;).addEventListener(&quot;click&quot;, function(e) {
+             // e.target is the clicked element!
+             // If it was a list item
+             if(e.target &amp;&amp; e.target.nodeName == &quot;LI&quot;) {
+                // List item found! Output the ID!
+                console.log(&quot;List item &quot;, e.target.id.replace(&quot;post-&quot;, &quot;&quot;), &quot; was clicked!&quot;);
+             }
+            });
+          </pre>
+        </div>
       </div>
-      <div class="row ironman">AMD and CommonJS</div>
-      <div class="row type">
-        In JavaScript, the word "modules" refers to small units of independent, reusable code. ... Asynchronous Module Definition (AMD) is the most popular for client-side code, while node.js modules (an extension to CommonJS Modules/1.1) is the leading pattern in server-side environments.
+
+      <div class="question">
+        <div class="row ironman">Understanding Prototypal Inheritance in JavaScript</div>
+        <div class="row type">
+          In JavaScript all functions are objects
+          <pre>
+            function foo() {
+
+            }
+
+            typeof foo.prototype // &lsquo;object&rsquo;
+          </pre>
+          And here is the example of prototype inheritance
+          <pre>
+            function Dog() {
+
+            }
+
+            Dog.prototype.bark = function() {
+
+            console.log(&#x2018;woof!&#x2019;);
+
+            };
+
+            var fido = new Dog();
+            fido.bark(); // &#x2018;woof!&#x2019;
+          </pre>
+          JavaScript uses an inheritance model called <b>“differential inheritance”.</b> What that means is that methods aren’t copied from parent to child. Instead, children have an “invisible link” back to their parent object.
+          What actually happens when I write <code>fido.bark()</code> is this:<br>
+          1. The JS engine looks for a property called bark on our fido object.<br>
+          2. It doesn’t find one, so it looks “up the prototype chain” to fido’s parent, which is <code>Dog.prototype</code>.<br>
+
+          3. It finds <code>Dog.prototype.bark</code>, and calls it with this bound to fido.<br>
+
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="row ironman">AMD and CommonJS</div>
+        <div class="row type">
+          In JavaScript, the word "modules" refers to small units of independent, reusable code. ... Asynchronous Module Definition (AMD) is the most popular for client-side code, while node.js modules (an extension to CommonJS Modules/1.1) is the leading pattern in server-side environments.
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="row ironman">Closure in JavaScript</div>
+        <div class="row type">
+          A closure is a way of keeping access to variables in a function after that function has returned.
+          <pre>
+            function notAClosure() {
+                var shortLivedVariable = &#x22;I&#x27;m only here for a little while&#x22;;
+                return shortLivedVariable;
+            }
+            notAClosure(); // returns &#x22;I&#x27;m only here for a little while&#x22;
+          </pre>
+          In a closure those variables stick around for a while longer since there is a reference to the variables after the function returns.
+          <pre>
+            function aClosure() {
+                var longLivedVariable = &#x22;I&#x27;m here for a long time&#x22;;
+                var innerFunction = function inner() {
+                    return longLivedVariable;
+                }
+                return innerFunction;
+            }
+            var closure = aClosure(); // returns a reference to innerFunction
+            closure(); // returns &#x22;I&#x27;m here for a long time&#x22;
+          </pre>
+          This is a good example of closure:
+          <pre>
+            function cat(name) {
+                return {
+                    sayName: function() {
+                        return name;
+                    }
+                }
+            }
+
+            var fluffy = cat('Mr. Fluffy');
+            fluffy.name // returns undefined
+            fluffy.sayName() // returns 'Mr. Fluffy'
+
+            var whiskers = cat('Whiskers');
+            whiskers.sayName() // returns 'Whiskers'
+          </pre>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="row ironman">Function types in JavaScript</div>
+        <div class="row type">
+          Anonymous function.
+          <pre>
+            function takesACallback(callback) {
+                // do some interesting things here
+                return &#x22;The callback says: &#x22; + callback();
+            }
+
+            takesACallback(function() {
+                return &#x22;I&#x27;m the callback!&#x22;;
+            }); // returns &#x22;The callback says: I&#x27;m the callback!&#x22;
+          </pre>
+          Anonymous functions are typical used as callbacks.
+        </div>
       </div>
     </div>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -117,7 +191,6 @@ fido.bark(); // &#x2018;woof!&#x2019;
 
       ga('create', 'UA-100809849-1', 'auto');
       ga('send', 'pageview');
-
     </script>
   </body>
 </html>

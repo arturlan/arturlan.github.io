@@ -28,4 +28,11 @@ $(document).ready(function(){
       $("#authors").remove();
       $('.arturlan').show();
     });
+
+    // thinking
+    $('.row.ironman').on('click', () => {
+      $parent_box = $(this).closest('.question');
+      $parent_box.siblings().find('.bottom').hide();
+	    $parent_box.find('.bottom').toggle();
+    })
 });
