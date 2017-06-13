@@ -181,6 +181,69 @@
           Anonymous functions are typical used as callbacks.
         </div>
       </div>
+
+      <div class="question">
+        <div class="row ironman">Module pattern vs Classical inheritance</div>
+        <div class="row type">
+          Module pattern
+          <blockquote cite="http://">
+            In JavaScript, the Module pattern is used to further emulate the concept of classes in such a way that we’re able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope.
+            - Addy Osmani, Learning Javascript Design Patterns
+          </blockquote>
+          <pre>
+            var myModule = (function(){
+
+            &#x9;var privateVar = &#x22;abc&#x22;;
+            &#x9;var privateMethod = function() {
+            &#x9;&#x9;console.log(privateVar);
+            &#x9;};
+
+            &#x9;return {
+            &#x9;&#x9;setVar: function(str) {
+            &#x9;&#x9;&#x9;privateVar = str;
+            &#x9;&#x9;},
+            &#x9;&#x9;getVar: function() {
+            &#x9;&#x9;&#x9;return privateVar;
+            &#x9;&#x9;},
+            &#x9;&#x9;printVar: privateMethod
+            &#x9;};
+
+            })();
+          </pre>
+          Classical inheritance
+          <pre>
+            function Person (name) {
+            &#x9;this.name = name;
+            }
+            Person.prototype.sayMyName = function() {
+            &#x9;console.log(&#x22;My name is &#x22; + this.name);
+            };
+            Person.prototype.walk = function() {
+            &#x9;console.log(&#x22;I am walking...&#x22;);
+            };
+
+            function Student(name){
+            &#x9;Person.call( this, name );
+            }
+
+            Student.prototype = new Person();
+            // Student.prototype = Object.create(Person.prototype);
+
+            Student.prototype.read = function() {
+            &#x9;console.log(&#x22;I am reading...&#x22;);
+            };
+
+
+            var neil = new Student(&#x22;neill&#x22;);
+            neil.sayMyName();
+            neil.walk();
+            neil.read();
+            console.log(neil instanceof Student); // true
+            console.log(neil instanceof Person); // true
+          </pre>
+        </div>
+      </div>
+
     </div>
 
     <script>
