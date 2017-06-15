@@ -255,7 +255,7 @@
 
             functionName.call(obj, 1, 2, 3) //return 8
             functionName.apply(obj, [1, 2, 3]) //also returns 8, but argument is an array
-            
+
             var anotherFunction = functionName.bind(obj) //returns function with object
             anotherFunction(1, 2, 3) //return 8
         </div>
