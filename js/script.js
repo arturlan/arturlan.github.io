@@ -35,4 +35,5 @@ $(document).ready(function(){
     	$parent_box.siblings().find('.row.type').hide();
     	$parent_box.find('.row.type').toggle();
     });
+    
 });

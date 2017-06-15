@@ -244,6 +244,23 @@
         </div>
       </div>
 
+      <div class="question">
+        <div class="row ironman">Call(), Apply() and Bind()</div>
+        <div class="row type">
+          <pre>
+            var obj = {num:2};
+            var functionName = function(arg1, arg2, arg3) {
+              return this.num + arg1 + arg2 + arg3;
+            };
+
+            functionName.call(obj, 1, 2, 3) //return 8
+            functionName.apply(obj, [1, 2, 3]) //also returns 8, but argument is an array
+            
+            var anotherFunction = functionName.bind(obj) //returns function with object
+            anotherFunction(1, 2, 3) //return 8
+        </div>
+      </div>
+
     </div>
 
     <script>
