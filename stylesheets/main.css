@@ -197,9 +197,9 @@ i {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 280px;
-  max-width: 480px;
-  max-height: 345px;
+  /*min-width: 280px;*/
+  width: 480px;
+  height: 345px;
   width: 48%;
   background: #3085a3;
   text-align: center;
