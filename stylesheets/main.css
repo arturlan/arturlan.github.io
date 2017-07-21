@@ -369,6 +369,9 @@ i {
   color: #cccccc;
   font-family: 'Alegreya', serif;
 }
+.row {
+  font-family: 'Roboto Mono', monospace;
+}
 code {
   background-color: #67BCDB;
   color: black;
@@ -402,7 +405,11 @@ pre {
 
 /*************************************************************/
 /*********************making page*************************/
-
+.making.list {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  margin: 40px;
+}
 
 /*************************************************************/
 /*********************collecting page*************************/
@@ -415,12 +422,19 @@ pre {
 
 /*************************************************************/
 /*********************reading page*************************/
-.reading.list .anna.karenina {
+.reading.list .source {
   color: white;
   font-family: 'Roboto Mono', monospace;
   margin: 40px;
 }
 
+.reading.list .poster {
+  margin: 40px;
+}
+
+.reading.list .hacker {
+  margin-top: -20px;
+}
 /*************************************************************/
 
 @media screen and (min-width: 600px) {

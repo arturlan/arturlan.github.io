@@ -20,14 +20,14 @@ $(document).ready(function(){
       $("body").fadeTo(300, 1, "linear");
     });
 
-    $("#reading").mouseover(() => {
-      $('.arturlan').hide();
-      $(".hidden").prepend('<img id="authors" src="images/authors.png"/>')
-    });
-    $("#reading").mouseleave(() => {
-      $("#authors").remove();
-      $('.arturlan').show();
-    });
+    // $("#reading").mouseover(() => {
+    //   $('.arturlan').hide();
+    //   $(".hidden").prepend('<img id="authors" src="images/authors.png"/>')
+    // });
+    // $("#reading").mouseleave(() => {
+    //   $("#authors").remove();
+    //   $('.arturlan').show();
+    // });
 
     // thinking
     $('.row.ironman').on('click', function() {
@@ -35,5 +35,5 @@ $(document).ready(function(){
     	$parent_box.siblings().find('.row.type').hide();
     	$parent_box.find('.row.type').toggle();
     });
-    
+
 });
